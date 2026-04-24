@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "title": "Active Clinical Pipeline Counts by Drug Modality",
+    "confidence": "verified",
+    "source": "ClinicalTrials.gov API v2",
+    "source_url": "https://clinicaltrials.gov/api/v2/studies",
+    "note": "Queried April 2026 using modality-specific keyword searches. Each modality queried using intervention type terms and drug class keywords. Counts represent total registered studies (all statuses) containing drugs of that modality type as an intervention.",
+    "last_updated": "2026-04",
+    "how_to_refresh": "Use ClinicalTrials.gov API v2 with intervention-type queries. Example for monoclonal antibodies: GET https://clinicaltrials.gov/api/v2/studies?query.intr=monoclonal+antibody&countTotal=true. For each modality, use the specific search terms listed in this file."
+  },
+  "data": {
+    "monoclonal_antibody": { "count": 15544, "search_term": "monoclonal antibody", "notes": "Largest biologic category. Includes mAbs, naked antibodies, antibody fragments." },
+    "cell_therapy": { "count": 27305, "search_term": "cell therapy", "notes": "Broadest category — includes CAR-T, TIL, NK cells, dendritic cells, stem cells." },
+    "peptide_drug": { "count": 10273, "search_term": "peptide drug", "notes": "Includes GLP-1 agonists, peptide hormones, cyclic peptides." },
+    "checkpoint_inhibitor": { "count": 6161, "search_term": "checkpoint inhibitor OR anti-PD-1 OR anti-PD-L1 OR anti-CTLA-4", "notes": "PD-1/PD-L1 inhibitors dominate; newer LAG-3, TIGIT checkpoint agents growing." },
+    "gene_therapy": { "count": 3429, "search_term": "gene therapy OR AAV OR lentiviral vector OR adeno-associated virus", "notes": "Includes in vivo gene delivery and ex vivo gene modification." },
+    "kinase_inhibitor": { "count": 2719, "search_term": "kinase inhibitor OR tyrosine kinase inhibitor OR TKI", "notes": "TKIs remain the most active small molecule oncology class." },
+    "car_t_cell": { "count": 2519, "search_term": "CAR-T OR chimeric antigen receptor", "notes": "Subset of cell_therapy total; CD19 and BCMA most targeted antigens." },
+    "adc": { "count": 1247, "search_term": "antibody-drug conjugate OR ADC", "notes": "Fast-growing category; HER2 and TROP2 most targeted antigens." },
+    "nk_cell_therapy": { "count": 1185, "search_term": "NK cell therapy OR natural killer cell", "notes": "Emerging allogeneic cell therapy platform." },
+    "mrna_therapeutic": { "count": 1003, "search_term": "mRNA OR messenger RNA therapeutic OR mRNA vaccine", "notes": "Includes therapeutic mRNA and mRNA vaccines. Post-COVID platform expansion." },
+    "fusion_protein": { "count": 859, "search_term": "fusion protein OR Fc-fusion", "notes": "Includes Fc-fusion proteins and receptor-Ig fusion constructs." },
+    "bispecific_antibody": { "count": 733, "search_term": "bispecific antibody OR bispecific", "notes": "Fastest-growing antibody sub-category. T-cell engagers dominate." },
+    "til_therapy": { "count": 342, "search_term": "tumor infiltrating lymphocytes OR TIL therapy", "notes": "Growing rapidly post-Amtagvi approval (2024). Expanding to solid tumors." },
+    "antisense_oligonucleotide": { "count": 176, "search_term": "antisense oligonucleotide OR ASO", "notes": "Mature RNA platform. GalNAc-ASO and intrathecal ASO most active." },
+    "crispr": { "count": 170, "search_term": "CRISPR OR gene editing OR Cas9", "notes": "Mostly ex vivo hematopoietic cell editing. In vivo CRISPR in early trials." },
+    "sirna": { "count": 157, "search_term": "siRNA OR small interfering RNA OR GalNAc-siRNA", "notes": "GalNAc-siRNA platform dominates. Liver-targeted for metabolic and rare disease." },
+    "protac_degrader": { "count": 39, "search_term": "PROTAC OR protein degrader OR targeted protein degradation", "notes": "Newest modality in trials. No approvals yet but >20 PROTACs in Phase 1-3." }
+  }
+}

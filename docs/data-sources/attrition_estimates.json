@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "title": "Pipeline Attrition Estimates by Drug Modality",
+    "confidence": "estimated",
+    "source": "BIO Industry Analysis 2021 + Nature Reviews Drug Discovery",
+    "source_urls": [
+      "https://www.bio.org/blogs/clinical-development-success-rates-2011-2020",
+      "https://www.nature.com/articles/d41573-021-00187-6"
+    ],
+    "note": "IMPORTANT: Phase counts are industry-wide estimates, NOT exact trial counts. Success rates are derived from pooled analyses of drug development programs across multiple years. Actual numbers vary by company, indication, and year. These represent typical industry dynamics, not a specific snapshot. Use for illustrative/educational purposes; do not cite as precise statistics.",
+    "last_updated": "2026-04 (source data from 2021)",
+    "how_to_refresh": "Update from BIO annual Clinical Development Success Rates report (bio.org) and Nature Reviews Drug Discovery systematic reviews of phase transition rates. FDA CDER's 'Novel Drug Approvals' pages can be cross-referenced for approved count accuracy."
+  },
+  "data": [
+    {
+      "modality": "Small Molecules",
+      "phaseI_estimate": 8000,
+      "phaseII_estimate": 3200,
+      "phaseIII_estimate": 1200,
+      "approved_estimate": 320,
+      "success_rate": "4.0%",
+      "notes": "Largest pipeline category. Low success rate partly due to broad scope. Oncology small molecules have higher attrition than CNS or metabolic.",
+      "key_source": "BIO 2021 analysis covering 2011-2020 FDA submissions"
+    },
+    {
+      "modality": "Monoclonal Antibodies",
+      "phaseI_estimate": 600,
+      "phaseII_estimate": 360,
+      "phaseIII_estimate": 200,
+      "approved_estimate": 80,
+      "success_rate": "13.3%",
+      "notes": "Higher success rate than small molecules due to target specificity and validated biology. Phase II→III transition higher than other modalities.",
+      "key_source": "IQVIA 2023 Global Oncology Trends + BIO 2021"
+    },
+    {
+      "modality": "ADCs",
+      "phaseI_estimate": 100,
+      "phaseII_estimate": 55,
+      "phaseIII_estimate": 25,
+      "approved_estimate": 7,
+      "success_rate": "7.0%",
+      "notes": "Narrow therapeutic window causes high Phase I toxicity attrition. New-generation ADCs (high DAR, bystander effect) improving outlook.",
+      "key_source": "Evaluate Pharma ADC analysis 2023"
+    },
+    {
+      "modality": "Gene Therapy",
+      "phaseI_estimate": 341,
+      "phaseII_estimate": 306,
+      "phaseIII_estimate": 35,
+      "approved_estimate": 15,
+      "success_rate": "4.4%",
+      "notes": "Unusual attrition profile: many Phase I trials (proof of concept), but regulatory, manufacturing, and efficacy challenges reduce Phase III count. Based on ASGCT Q4 2024 pipeline report.",
+      "key_source": "ASGCT Gene Therapy Pipeline Report Q4 2024"
+    },
+    {
+      "modality": "CAR-T / Cell Therapy",
+      "phaseI_estimate": 200,
+      "phaseII_estimate": 150,
+      "phaseIII_estimate": 40,
+      "approved_estimate": 10,
+      "success_rate": "5.0%",
+      "notes": "High remission rates but manufacturing complexity and CRS toxicity limit broader success. Allogeneic approaches may improve economics.",
+      "key_source": "ASGCT 2024 + published Phase 3 trial landscape"
+    },
+    {
+      "modality": "RNA Therapeutics",
+      "phaseI_estimate": 350,
+      "phaseII_estimate": 250,
+      "phaseIII_estimate": 80,
+      "approved_estimate": 25,
+      "success_rate": "7.1%",
+      "notes": "GalNAc-siRNA platform has excellent Phase 2→3 success for liver targets. ASOs have variable success by indication and delivery route.",
+      "key_source": "Alnylam R&D presentations 2024 + published RNAi trial analyses"
+    },
+    {
+      "modality": "Bispecifics",
+      "phaseI_estimate": 60,
+      "phaseII_estimate": 30,
+      "phaseIII_estimate": 15,
+      "approved_estimate": 8,
+      "success_rate": "13.3%",
+      "notes": "High success rate for approved modality. CRS and neurotoxicity are key Phase 1 discontinuation drivers.",
+      "key_source": "IQVIA 2024 Bispecific Antibody Landscape"
+    },
+    {
+      "modality": "Peptides",
+      "phaseI_estimate": 100,
+      "phaseII_estimate": 80,
+      "phaseIII_estimate": 40,
+      "approved_estimate": 15,
+      "success_rate": "15.0%",
+      "notes": "Highest estimated success rate, driven largely by GLP-1 peptide class with robust Phase 2 → 3 → approval transitions. Other peptide classes have more typical attrition.",
+      "key_source": "Industry peptide drug development analyses + GLP-1 clinical program data"
+    }
+  ]
+}

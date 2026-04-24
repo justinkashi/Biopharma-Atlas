@@ -1,0 +1,22 @@
+{
+  "monoclonal_antibody": 15544,
+  "antibody_drug_conjugate": 753,
+  "bispecific_antibody": 733,
+  "car_t_cell": 2519,
+  "gene_therapy": 3429,
+  "sirna": 157,
+  "antisense_oligonucleotide": 176,
+  "mrna_therapeutic": 1003,
+  "cell_therapy": 27305,
+  "peptide_drug": 10273,
+  "small_molecule": 384,
+  "checkpoint_inhibitor": 6161,
+  "kinase_inhibitor": 2719,
+  "protac_degrader": 39,
+  "rna_vaccine": 602,
+  "crispr": 170,
+  "nk_cell_therapy": 1185,
+  "til_therapy": 342,
+  "fusion_protein": 859,
+  "adc": 1247
+}

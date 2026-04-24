@@ -1,0 +1,160 @@
+{
+  "_meta": {
+    "title": "Pharmaceutical Company Pipeline Sizes and Focus Areas",
+    "confidence": "estimated",
+    "source": "Company pipeline disclosures + SEC filings",
+    "source_urls": [
+      "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&type=10-K",
+      "Company IR pages (roche.com, pfizer.com, novartis.com, etc.)"
+    ],
+    "note": "IMPORTANT: Pipeline sizes are approximate based on public disclosures. Actual counts vary significantly depending on inclusion criteria (Phase 1 only? All phases? Discovery programs? Partnered assets?). These numbers are intended for relative comparison and visualization, not precise benchmarking. Always verify against official company R&D day presentations for accuracy.",
+    "last_updated": "2026-04",
+    "how_to_refresh": "Check annual reports (10-K filings via SEC EDGAR), R&D day presentations, and company pipeline pages on IR websites. Corroborate with commercial databases like Evaluate Pharma, Citeline Pharma Intelligence, or GlobalData."
+  },
+  "data": [
+    {
+      "name": "Roche/Genentech",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 180,
+      "topModalities": ["mAbs", "ADCs", "Bispecifics"],
+      "focus": "Oncology, Immunology",
+      "notes": "World's largest oncology portfolio. Leading ADC/bispecific franchise."
+    },
+    {
+      "name": "Pfizer",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 165,
+      "topModalities": ["Small Molecules", "mRNA", "mAbs"],
+      "focus": "Oncology, Vaccines, Inflammation",
+      "notes": "BioNTech COVID mRNA partnership; expanded into mRNA platform. Seagen acquisition added ADC portfolio."
+    },
+    {
+      "name": "Novartis",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 160,
+      "topModalities": ["Small Molecules", "CAR-T", "Gene Therapy"],
+      "focus": "Oncology, CV, Ophthalmology",
+      "notes": "Kymriah (CAR-T) pioneer. Zolgensma (gene therapy). RadioDC platform emerging."
+    },
+    {
+      "name": "AstraZeneca",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 180,
+      "topModalities": ["Small Molecules", "mAbs", "ADCs"],
+      "focus": "Oncology, CV, Respiratory",
+      "notes": "Largest ADC pipeline after Daiichi Sankyo partnerships (Enhertu, Dato-DXd)."
+    },
+    {
+      "name": "Merck & Co",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 145,
+      "topModalities": ["Small Molecules", "mAbs", "mRNA"],
+      "focus": "Oncology (Keytruda), Vaccines",
+      "notes": "Pembrolizumab (Keytruda) is world's best-selling oncology drug. mRNA personalized cancer vaccines in Phase 3."
+    },
+    {
+      "name": "Johnson & Johnson",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 130,
+      "topModalities": ["mAbs", "Bispecifics", "Small Molecules"],
+      "focus": "Oncology, Immunology",
+      "notes": "Teclistamab bispecific for myeloma. Amivantamab bispecific for lung cancer."
+    },
+    {
+      "name": "Bristol-Myers Squibb",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 120,
+      "topModalities": ["Small Molecules", "CAR-T", "mAbs"],
+      "focus": "Oncology, Hematology",
+      "notes": "Opdivo (nivolumab, PD-1) flagship. Abecma/Breyanzi CAR-T in hematology."
+    },
+    {
+      "name": "Eli Lilly",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 95,
+      "topModalities": ["Peptides", "mAbs", "Small Molecules"],
+      "focus": "Diabetes/Obesity, Neuro, Oncology",
+      "notes": "Tirzepatide (GLP-1/GIP) is fastest-growing revenue drug globally."
+    },
+    {
+      "name": "Novo Nordisk",
+      "type": "Big Pharma",
+      "pipelineSize_approx": 75,
+      "topModalities": ["Peptides (GLP-1)", "Small Molecules"],
+      "focus": "Diabetes, Obesity, Rare Blood",
+      "notes": "Semaglutide (Ozempic/Wegovy) drove Novo's market cap to ~$600B in 2024."
+    },
+    {
+      "name": "Moderna",
+      "type": "Biotech",
+      "pipelineSize_approx": 48,
+      "topModalities": ["mRNA Vaccines", "mRNA Therapeutics"],
+      "focus": "Vaccines, Oncology (mRNA)",
+      "notes": "Platform company: RSV mRNA vaccine approved 2024. Personalized cancer vaccines in Phase 3 with Merck."
+    },
+    {
+      "name": "BioNTech",
+      "type": "Biotech",
+      "pipelineSize_approx": 35,
+      "topModalities": ["mRNA", "CAR-T", "Bispecifics"],
+      "focus": "Oncology, Vaccines",
+      "notes": "Beyond COVID: mRNA cancer vaccines, CAR-T, bispecifics in clinical development."
+    },
+    {
+      "name": "Alnylam",
+      "type": "Biotech",
+      "pipelineSize_approx": 25,
+      "topModalities": ["siRNA"],
+      "focus": "Rare disease, CV, CNS",
+      "notes": "Founded the GalNAc-siRNA platform. Multiple approved products. Expanding beyond liver."
+    },
+    {
+      "name": "Ionis Pharma",
+      "type": "Biotech",
+      "pipelineSize_approx": 35,
+      "topModalities": ["ASOs"],
+      "focus": "Rare disease, CV, Neuro",
+      "notes": "Pioneer of antisense oligonucleotide platform. Multiple partnerships (AstraZeneca, Biogen)."
+    },
+    {
+      "name": "Gilead Sciences",
+      "type": "Biotech",
+      "pipelineSize_approx": 55,
+      "topModalities": ["Small Molecules", "CAR-T"],
+      "focus": "HIV, Oncology, Liver",
+      "notes": "Kite Pharma acquisition brought CAR-T portfolio. Seladelpar/bropirstatin in liver disease."
+    },
+    {
+      "name": "Regeneron",
+      "type": "Biotech",
+      "pipelineSize_approx": 40,
+      "topModalities": ["mAbs", "Gene Therapy"],
+      "focus": "Ophthalmology, Immunology, Oncology",
+      "notes": "Dupilumab co-commercialized with Sanofi. Eylea franchise. VelociSuite antibody discovery platform."
+    },
+    {
+      "name": "bluebird bio",
+      "type": "Biotech",
+      "pipelineSize_approx": 8,
+      "topModalities": ["Gene Therapy (Lentiviral)"],
+      "focus": "Hematology, Rare disease",
+      "notes": "Lovo-cel (sickle cell) and Zynteglo (beta-thalassemia) approved. Commercial challenges persist."
+    },
+    {
+      "name": "CRISPR Therapeutics",
+      "type": "Biotech",
+      "pipelineSize_approx": 10,
+      "topModalities": ["CRISPR Gene Editing"],
+      "focus": "Hematology, Diabetes",
+      "notes": "Casgevy (with Vertex) — first approved CRISPR therapy. Type 1 diabetes (VX-880 stem cell) in trials."
+    },
+    {
+      "name": "Academic/NIH",
+      "type": "Academic",
+      "pipelineSize_approx": 2500,
+      "topModalities": ["All modalities"],
+      "focus": "Early-stage research across all areas",
+      "notes": "ClinicalTrials.gov institutional sponsor count for academic medical centers + NIH IND programs. All modalities; typically Phase 0-2 proof-of-concept."
+    }
+  ]
+}

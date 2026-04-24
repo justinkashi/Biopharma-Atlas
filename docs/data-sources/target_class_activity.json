@@ -1,0 +1,92 @@
+{
+  "_meta": {
+    "title": "Drug Target Class Pipeline Activity (2005, 2015, 2025)",
+    "confidence": "estimated",
+    "source": "Industry landscape analyses + ClinicalTrials.gov keyword searches",
+    "note": "Activity numbers represent approximate active pipeline programs for each target class in each year, NOT exact trial counts. 2005 and 2015 figures are retrospective estimates from published landscape analyses. 2025 figures are from keyword-based ClinicalTrials.gov searches cross-referenced with commercial pipeline databases. Numbers should be understood as order-of-magnitude indicators, not precise statistics.",
+    "last_updated": "2026-04",
+    "how_to_refresh": "For current year (2025): query ClinicalTrials.gov API with target-specific terms (e.g., 'kinase inhibitor', 'immune checkpoint', 'GPCR agonist'). For historical estimates, reference published analyses in Nature Reviews Drug Discovery, Drug Discovery Today, or similar journals."
+  },
+  "data": [
+    {
+      "targetClass": "Kinases",
+      "activity2005": 45,
+      "activity2015": 280,
+      "activity2025": 520,
+      "trend": "up",
+      "notes": "Driven by oncology TKI expansion. 100+ FDA-approved kinase inhibitors as of 2025."
+    },
+    {
+      "targetClass": "GPCRs",
+      "activity2005": 120,
+      "activity2015": 95,
+      "activity2025": 140,
+      "trend": "up",
+      "notes": "GLP-1R agonist boom resurrecting GPCR interest after mid-2000s decline."
+    },
+    {
+      "targetClass": "Ion Channels",
+      "activity2005": 80,
+      "activity2015": 50,
+      "activity2025": 45,
+      "trend": "down",
+      "notes": "Selectivity challenges. CFTR modulators are exception (cystic fibrosis)."
+    },
+    {
+      "targetClass": "Immune Checkpoints",
+      "activity2005": 2,
+      "activity2015": 85,
+      "activity2025": 650,
+      "trend": "up",
+      "notes": "Fastest growth of any target class. PD-1/PD-L1 dominant; next-gen LAG-3/TIGIT expanding."
+    },
+    {
+      "targetClass": "TNF / Cytokines",
+      "activity2005": 90,
+      "activity2015": 110,
+      "activity2025": 85,
+      "trend": "stable",
+      "notes": "Mature class. Moving from TNF to more specific cytokine targets (IL-23 > IL-12/23)."
+    },
+    {
+      "targetClass": "Nuclear Receptors",
+      "activity2005": 65,
+      "activity2015": 40,
+      "activity2025": 55,
+      "trend": "stable",
+      "notes": "AR and ER remain active in prostate/breast cancer. THR-β for MASH emerging."
+    },
+    {
+      "targetClass": "Epigenetic Targets",
+      "activity2005": 5,
+      "activity2015": 35,
+      "activity2025": 120,
+      "trend": "up",
+      "notes": "HDAC inhibitors mature; EZH2, BET, IDH1/2 inhibitors expanding."
+    },
+    {
+      "targetClass": "Protein Degradation",
+      "activity2005": 0,
+      "activity2015": 3,
+      "activity2025": 45,
+      "trend": "up",
+      "notes": "Entirely new modality. PROTACs, molecular glues. No approvals as of April 2026."
+    },
+    {
+      "targetClass": "CD Antigens (B/T cell)",
+      "activity2005": 15,
+      "activity2015": 40,
+      "activity2025": 280,
+      "trend": "up",
+      "notes": "CD19, CD20, BCMA, CD33, CD38. Foundation for CAR-T, bispecifics, ADCs."
+    },
+    {
+      "targetClass": "RNA Targets",
+      "activity2005": 8,
+      "activity2015": 25,
+      "activity2025": 180,
+      "trend": "up",
+      "notes": "siRNA, ASO, mRNA replacement. GalNAc platform dominates liver-targeted siRNA."
+    }
+  ]
+}

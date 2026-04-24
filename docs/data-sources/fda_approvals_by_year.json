@@ -1,0 +1,42 @@
+{
+  "_meta": {
+    "title": "FDA Novel Drug Approvals by Modality (2000–2025)",
+    "confidence": "composite",
+    "source": "FDA CDER NME + CBER BLA compilations",
+    "source_urls": [
+      "https://www.fda.gov/drugs/development-approval-process-drugs/novel-drug-approvals-fda",
+      "https://www.fda.gov/vaccines-blood-biologics/development-approval-process-cber"
+    ],
+    "note": "Year-by-year categorization from FDA annual reports. Some years required manual modality classification from drug labels. Data reflects approved NCEs (New Chemical Entities), NBEs (New Biologic Entities), and BLAs.",
+    "last_updated": "2026-04",
+    "how_to_refresh": "Download FDA CDER NME approval lists from fda.gov/drugs/development-approval-process-drugs/novel-drug-approvals-fda and cross-reference drug labels for modality classification. CBER approvals available at fda.gov/vaccines-blood-biologics."
+  },
+  "data": [
+    { "year": 2000, "smallMolecule": 24, "mAb": 0, "adc": 1, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2001, "smallMolecule": 22, "mAb": 1, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2002, "smallMolecule": 16, "mAb": 2, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 0, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2003, "smallMolecule": 18, "mAb": 1, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2004, "smallMolecule": 30, "mAb": 3, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2005, "smallMolecule": 18, "mAb": 0, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 1 },
+    { "year": 2006, "smallMolecule": 20, "mAb": 1, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 0, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2007, "smallMolecule": 16, "mAb": 1, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 0, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2008, "smallMolecule": 21, "mAb": 0, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 3, "mRNAVaccine": 0, "fcFusion": 1 },
+    { "year": 2009, "smallMolecule": 22, "mAb": 3, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2010, "smallMolecule": 17, "mAb": 1, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 0, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2011, "smallMolecule": 29, "mAb": 3, "adc": 1, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 2 },
+    { "year": 2012, "smallMolecule": 33, "mAb": 2, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 4, "mRNAVaccine": 0, "fcFusion": 1 },
+    { "year": 2013, "smallMolecule": 22, "mAb": 1, "adc": 1, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 1, "peptide": 0, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2014, "smallMolecule": 33, "mAb": 4, "adc": 0, "bispecific": 1, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 2 },
+    { "year": 2015, "smallMolecule": 33, "mAb": 7, "adc": 0, "bispecific": 0, "geneTherapy": 1, "carT": 0, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2016, "smallMolecule": 15, "mAb": 6, "adc": 0, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 3, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2017, "smallMolecule": 34, "mAb": 7, "adc": 2, "bispecific": 1, "geneTherapy": 1, "carT": 2, "rnaTherapeutic": 0, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2018, "smallMolecule": 44, "mAb": 7, "adc": 1, "bispecific": 0, "geneTherapy": 0, "carT": 0, "rnaTherapeutic": 2, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2019, "smallMolecule": 36, "mAb": 4, "adc": 3, "bispecific": 0, "geneTherapy": 1, "carT": 0, "rnaTherapeutic": 3, "peptide": 2, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2020, "smallMolecule": 38, "mAb": 9, "adc": 2, "bispecific": 0, "geneTherapy": 0, "carT": 1, "rnaTherapeutic": 2, "peptide": 1, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2021, "smallMolecule": 36, "mAb": 7, "adc": 2, "bispecific": 1, "geneTherapy": 0, "carT": 3, "rnaTherapeutic": 3, "peptide": 1, "mRNAVaccine": 1, "fcFusion": 0 },
+    { "year": 2022, "smallMolecule": 22, "mAb": 2, "adc": 1, "bispecific": 4, "geneTherapy": 4, "carT": 1, "rnaTherapeutic": 2, "peptide": 2, "mRNAVaccine": 1, "fcFusion": 0 },
+    { "year": 2023, "smallMolecule": 34, "mAb": 6, "adc": 0, "bispecific": 4, "geneTherapy": 4, "carT": 1, "rnaTherapeutic": 3, "peptide": 4, "mRNAVaccine": 0, "fcFusion": 0 },
+    { "year": 2024, "smallMolecule": 32, "mAb": 13, "adc": 0, "bispecific": 3, "geneTherapy": 2, "carT": 2, "rnaTherapeutic": 2, "peptide": 2, "mRNAVaccine": 1, "fcFusion": 1 },
+    { "year": 2025, "smallMolecule": 28, "mAb": 8, "adc": 2, "bispecific": 1, "geneTherapy": 1, "carT": 1, "rnaTherapeutic": 4, "peptide": 2, "mRNAVaccine": 1, "fcFusion": 0 }
+  ]
+}

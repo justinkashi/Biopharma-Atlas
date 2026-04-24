@@ -1,0 +1,14 @@
+{
+  "oncology": 121405,
+  "cardiovascular": 78639,
+  "cns_neurology": 56600,
+  "immunology": 21409,
+  "respiratory": 61169,
+  "infectious": 53158,
+  "metabolic": 59608,
+  "rare_disease": 20398,
+  "ophthalmology": 7167,
+  "hepatology": 17468,
+  "dermatology": 41376,
+  "hematology": 42288
+}

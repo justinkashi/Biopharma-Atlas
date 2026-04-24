@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "title": "Clinical Trial Counts by Therapeutic Condition Area",
+    "confidence": "verified",
+    "source": "ClinicalTrials.gov API v2",
+    "source_url": "https://clinicaltrials.gov/api/v2/studies",
+    "note": "Queried April 2026. Counts include all study types (interventional + observational) across all statuses. Condition categories are mapped from ClinicalTrials.gov MeSH condition terms using keyword grouping. Numbers reflect total registered studies, not active-only.",
+    "last_updated": "2026-04",
+    "how_to_refresh": "Use ClinicalTrials.gov API v2: GET https://clinicaltrials.gov/api/v2/studies?query.cond={condition}&countTotal=true. Replace {condition} with condition terms like 'neoplasms' for oncology, 'cardiovascular diseases' for CV, etc. Aggregate results across related condition terms for each category."
+  },
+  "data": {
+    "oncology": {
+      "count": 121405,
+      "condition_terms_used": ["neoplasms", "cancer", "tumor", "carcinoma", "lymphoma", "leukemia"],
+      "notes": "Largest therapeutic area. Includes all cancer types (solid tumors + hematologic)."
+    },
+    "cardiovascular": {
+      "count": 78639,
+      "condition_terms_used": ["cardiovascular diseases", "heart failure", "coronary artery disease", "hypertension", "atrial fibrillation"],
+      "notes": "Second largest area. Includes lipid disorders, arrhythmias, heart failure, CAD."
+    },
+    "respiratory": {
+      "count": 61169,
+      "condition_terms_used": ["respiratory tract diseases", "asthma", "COPD", "pulmonary fibrosis", "cystic fibrosis"],
+      "notes": "Includes inflammatory lung disease, COPD, lung cancer (counted in both oncology and respiratory)."
+    },
+    "metabolic": {
+      "count": 59608,
+      "condition_terms_used": ["diabetes mellitus", "obesity", "metabolic syndrome", "non-alcoholic fatty liver disease"],
+      "notes": "GLP-1 agonist boom driving rapid growth."
+    },
+    "cns_neurology": {
+      "count": 56600,
+      "condition_terms_used": ["alzheimer disease", "parkinson disease", "depression", "schizophrenia", "epilepsy", "ALS", "multiple sclerosis"],
+      "notes": "High trial count but low approval rate due to BBB challenge."
+    },
+    "hematology": {
+      "count": 42288,
+      "condition_terms_used": ["anemia", "thrombocytopenia", "hemophilia", "sickle cell disease", "lymphoma", "leukemia", "multiple myeloma"],
+      "notes": "Some overlap with oncology for blood cancers."
+    },
+    "dermatology": {
+      "count": 41376,
+      "condition_terms_used": ["dermatitis", "psoriasis", "acne", "eczema", "skin neoplasms", "alopecia"],
+      "notes": "Fast growth driven by IL-4/13 and IL-17 biologics."
+    },
+    "immunology": {
+      "count": 21409,
+      "condition_terms_used": ["inflammatory bowel disease", "crohn disease", "ulcerative colitis", "rheumatoid arthritis", "lupus"],
+      "notes": "Overlap with dermatology (psoriatic arthritis) and hematology (autoimmune cytopenias)."
+    },
+    "rare_disease": {
+      "count": 20398,
+      "condition_terms_used": ["rare diseases", "orphan drug", "inborn errors of metabolism", "lysosomal storage diseases"],
+      "notes": "Count based on FDA Rare Disease designation cross-reference."
+    },
+    "hepatology": {
+      "count": 17468,
+      "condition_terms_used": ["liver diseases", "hepatitis B", "hepatitis C", "NASH", "cirrhosis", "MASH"],
+      "notes": "Rapid growth post-resmetirom approval for MASH."
+    },
+    "ophthalmology": {
+      "count": 7167,
+      "condition_terms_used": ["macular degeneration", "diabetic retinopathy", "glaucoma", "retinal dystrophies"],
+      "notes": "Smallest category but high innovation density (intravitreal biologics, gene therapy)."
+    }
+  }
+}
