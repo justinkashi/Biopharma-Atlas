@@ -5,7 +5,7 @@ import path from "path";
 // For GitHub Pages: set base to "/<repo-name>/" 
 // e.g., if your repo is "biopharma-atlas", use "/biopharma-atlas/"
 // For local dev or custom domain, use "./"
-const base = process.env.GITHUB_ACTIONS ? "/biopharma-atlas/" : "./";
+const base = process.env.GITHUB_ACTIONS ? "/Biopharma-Atlas/" : "./";
 
 export default defineConfig({
   plugins: [react()],
