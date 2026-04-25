@@ -72,7 +72,7 @@ function DNAIcon() {
   );
 }
 
-export function Sidebar() {
+export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [location] = useLocation();
   const [showSources, setShowSources] = useState(false);
 
@@ -94,7 +94,7 @@ export function Sidebar() {
         {NAV_ITEMS.map((item) => {
           const isActive = item.path === "/" ? location === "/" : location.startsWith(item.path);
           return (
-            <Link key={item.path} href={item.path}>
+            <Link key={item.path} href={item.path} onClick={onNavigate}>
               <div
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s/g, "-")}`}
                 className={`flex items-center gap-3 px-4 py-2.5 mx-2 rounded-md cursor-pointer transition-all duration-150 ${
@@ -115,6 +115,14 @@ export function Sidebar() {
           );
         })}
       </nav>
+
+      {/* Data freshness indicator */}
+      <div className="px-4 py-2 border-t border-sidebar-border">
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span className="text-[10px] text-muted-foreground font-mono">Data as of Apr 2026</span>
+        </div>
+      </div>
 
       {/* Sources popover at bottom */}
       <div className="p-3 border-t border-sidebar-border relative">
