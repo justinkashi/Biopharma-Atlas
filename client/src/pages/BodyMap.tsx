@@ -207,6 +207,8 @@ function WikimediaBodySVG({
         className="absolute inset-0 w-full h-full"
         style={{ overflow: "visible" }}
         xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Interactive anatomical body map — use Tab to navigate organ regions"
       >
         <defs>
           {Object.entries(ORGAN_COLORS).map(([id, color]) => (
@@ -235,10 +237,17 @@ function WikimediaBodySVG({
             <g
               key={group.id}
               data-testid={`organ-${group.id}`}
-              style={{ cursor: "pointer" }}
+              role="button"
+              tabIndex={0}
+              aria-label={`${group.label} — click to view clinical trial data`}
+              aria-pressed={isSelected}
+              style={{ cursor: "pointer", outline: "none" }}
               onClick={() => onSelect(group.id)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onSelect(group.id); } }}
               onMouseEnter={() => onHover(group.id)}
               onMouseLeave={() => onHover(null)}
+              onFocus={() => onHover(group.id)}
+              onBlur={() => onHover(null)}
             >
               {group.regions.map((region, i) => {
                 const sharedProps = {
@@ -393,9 +402,9 @@ export default function BodyMap() {
         </div>
       </div>
 
-      <div className="flex gap-6 h-[calc(100vh-140px)]">
+      <div className="flex flex-col lg:flex-row gap-6 lg:h-[calc(100vh-140px)]">
         {/* ── Left panel: SVG body ── */}
-        <div className="w-[360px] flex-shrink-0 bg-card border border-card-border rounded-xl p-4 flex flex-col items-center">
+        <div className="w-full lg:w-[360px] flex-shrink-0 bg-card border border-card-border rounded-xl p-4 flex flex-col items-center">
           <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3 self-start">
             Select an organ system
           </div>

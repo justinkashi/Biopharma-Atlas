@@ -9,6 +9,7 @@ import {
 } from "@/data/pipelineData";
 import { useInfoPanel } from "@/App";
 import { DataBadge } from "@/components/DataBadge";
+import { exportCsv } from "@/lib/exportCsv";
 
 // KPI Cards with trend info
 const KPI_DATA = [
@@ -238,7 +239,7 @@ function HeroBanner({ onDismiss }: { onDismiss: () => void }) {
           <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-2">
             6 views to explore
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.path}
@@ -289,7 +290,7 @@ export default function Overview() {
       </div>
 
       {/* KPI Cards with trend indicators */}
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {KPI_DATA.map((kpi) => (
           <div
             key={kpi.label}
@@ -332,6 +333,13 @@ export default function Overview() {
                   note={timelineNote.note}
                 />
               )}
+              <button
+                onClick={() => exportCsv("modality-timeline", modalityTimelineData as Record<string, unknown>[])}
+                className="text-[9px] px-1.5 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono"
+                title="Download CSV"
+              >
+                ↓ CSV
+              </button>
             </div>
             <p className="text-[10px] text-muted-foreground mt-0.5">FDA approvals by drug class</p>
           </div>
@@ -381,7 +389,7 @@ export default function Overview() {
       </div>
 
       {/* Two-column layout: condition bar + milestone strip */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Condition bar chart */}
         <div className="bg-card border border-card-border rounded-xl p-4">
           <div className="flex items-center gap-2 mb-1">
@@ -393,6 +401,13 @@ export default function Overview() {
                 note={conditionNote.note}
               />
             )}
+            <button
+              onClick={() => exportCsv("trials-by-condition", conditionData as Record<string, unknown>[])}
+              className="text-[9px] px-1.5 py-0.5 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono"
+              title="Download CSV"
+            >
+              ↓ CSV
+            </button>
           </div>
           <p className="text-[10px] text-muted-foreground mb-3">Hover a bar to see dominant modalities</p>
           <ResponsiveContainer width="100%" height={280}>

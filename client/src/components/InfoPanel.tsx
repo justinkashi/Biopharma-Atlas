@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { modalityInfo } from "@/data/pipelineData";
 
@@ -8,6 +9,13 @@ interface InfoPanelProps {
 
 export function InfoPanel({ modalityKey, onClose }: InfoPanelProps) {
   const info = modalityKey ? modalityInfo[modalityKey] : null;
+
+  useEffect(() => {
+    if (!info) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [info, onClose]);
 
   return (
     <AnimatePresence>

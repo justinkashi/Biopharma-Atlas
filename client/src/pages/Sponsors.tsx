@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { sponsorData } from "@/data/pipelineData";
+import { exportCsv } from "@/lib/exportCsv";
 
 type SponsorType = "All" | "Big Pharma" | "Biotech" | "Academic";
 
@@ -52,11 +53,17 @@ export default function Sponsors() {
 
   return (
     <div className="p-6 min-h-full">
-      <div className="mb-4">
-        <h1 className="text-lg font-semibold text-foreground tracking-tight">Pipeline Sponsors</h1>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Major companies and institutions driving drug development
-        </p>
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Pipeline Sponsors</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">Major companies and institutions driving drug development</p>
+        </div>
+        <button
+          onClick={() => exportCsv("sponsors", filtered.map(s => ({ name: s.name, type: s.type, pipelineSize: s.pipelineSize, focus: s.focus, modalities: s.topModalities.join("; ") })))}
+          className="text-[9px] px-2 py-1 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono flex-shrink-0"
+        >
+          ↓ CSV
+        </button>
       </div>
 
       {/* Filters + Sort */}
@@ -96,7 +103,7 @@ export default function Sponsors() {
       </div>
 
       {/* Sponsor grid */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {filtered.map((sponsor, i) => {
           const typeColor = TYPE_COLORS[sponsor.type] || "#8892a8";
           return (

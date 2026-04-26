@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+// @ts-ignore — vitest types added as devDep
+/// <reference types="vitest" />
 
 // For GitHub Pages: set base to "/<repo-name>/" 
 // e.g., if your repo is "biopharma-atlas", use "/biopharma-atlas/"
@@ -9,6 +11,12 @@ const base = process.env.GITHUB_ACTIONS ? "/Biopharma-Atlas/" : "./";
 
 export default defineConfig({
   plugins: [react()],
+  test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: [path.resolve(import.meta.dirname, "client/src/__tests__/setup.ts")],
+    include: [path.resolve(import.meta.dirname, "client/src/__tests__/**/*.test.{ts,tsx}")],
+  },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

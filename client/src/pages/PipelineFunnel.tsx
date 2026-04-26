@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 import { attritionData, pipelineByModality, dataSourceNotes } from "@/data/pipelineData";
 import { useInfoPanel } from "@/App";
 import { DataBadge } from "@/components/DataBadge";
+import { exportCsv } from "@/lib/exportCsv";
 
 const pipelineChartData = Object.entries(pipelineByModality)
   .map(([key, value]) => ({
@@ -70,11 +71,17 @@ export default function PipelineFunnel() {
 
   return (
     <div className="p-6 min-h-full">
-      <div className="mb-4">
-        <h1 className="text-lg font-semibold text-foreground tracking-tight">Pipeline Funnel & Attrition</h1>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          Phase progression and success rates by modality
-        </p>
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Pipeline Funnel & Attrition</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">Phase progression and success rates by modality</p>
+        </div>
+        <button
+          onClick={() => exportCsv("pipeline-attrition", attritionData as Record<string, unknown>[])}
+          className="text-[9px] px-2 py-1 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono flex-shrink-0"
+        >
+          ↓ CSV
+        </button>
       </div>
 
       {/* Attrition funnel cards */}
