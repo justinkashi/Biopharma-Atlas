@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { targetClassData, dataSourceNotes } from "@/data/pipelineData";
 import { DataBadge } from "@/components/DataBadge";
+import { exportCsv } from "@/lib/exportCsv";
 
 const YEARS = [2005, 2015, 2025] as const;
 const MAX_ACTIVITY = Math.max(...targetClassData.map(d => Math.max(d.activity2005, d.activity2015, d.activity2025)));
@@ -65,9 +66,17 @@ export default function TargetHeatmap() {
             Pipeline activity by drug target class across 2005 → 2015 → 2025. Click any row to explore.
           </p>
         </div>
+        <button
+          onClick={() => exportCsv("target-heatmap", targetClassData.map(r => ({
+            targetClass: r.targetClass, activity2005: r.activity2005, activity2015: r.activity2015, activity2025: r.activity2025, trend: r.trend
+          })))}
+          className="text-[9px] px-2 py-1 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono flex-shrink-0"
+        >
+          ↓ CSV
+        </button>
       </div>
 
-      <div className="flex gap-6">
+      <div className="flex flex-col lg:flex-row gap-6">
         {/* Heatmap */}
         <div className="flex-1 bg-card border border-card-border rounded-xl p-4">
           {/* Column headers */}

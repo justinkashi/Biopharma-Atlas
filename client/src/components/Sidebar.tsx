@@ -1,6 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/App";
 
 const NAV_ITEMS = [
   // Pitch & Investment
@@ -75,6 +76,7 @@ function DNAIcon() {
 export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const [location] = useLocation();
   const [showSources, setShowSources] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="flex flex-col h-full w-56 bg-sidebar border-r border-sidebar-border flex-shrink-0">
@@ -87,6 +89,20 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             <div className="text-[10px] text-muted-foreground font-mono">Pipeline Intelligence</div>
           </div>
         </div>
+      </div>
+
+      {/* Search trigger */}
+      <div className="px-3 py-2 border-b border-sidebar-border">
+        <button
+          onClick={() => window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", ctrlKey: true, bubbles: true }))}
+          className="w-full flex items-center gap-2 px-3 py-1.5 rounded-md border border-border text-xs text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors bg-background/50"
+        >
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/>
+          </svg>
+          <span className="flex-1 text-left">Search…</span>
+          <kbd className="text-[9px] border border-border rounded px-1 font-mono">⌘K</kbd>
+        </button>
       </div>
 
       {/* Nav items */}
@@ -116,12 +132,31 @@ export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
         })}
       </nav>
 
-      {/* Data freshness indicator */}
-      <div className="px-4 py-2 border-t border-sidebar-border">
+      {/* Data freshness + theme toggle */}
+      <div className="px-4 py-2 border-t border-sidebar-border flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
           <span className="text-[10px] text-muted-foreground font-mono">Data as of Apr 2026</span>
         </div>
+        <button
+          onClick={toggleTheme}
+          aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          className="p-1 rounded text-muted-foreground hover:text-foreground hover:bg-sidebar-accent transition-colors"
+        >
+          {theme === "dark" ? (
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <circle cx="8" cy="8" r="4"/>
+              <line x1="8" y1="1" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="15"/>
+              <line x1="1" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="15" y2="8"/>
+              <line x1="3" y1="3" x2="4.4" y2="4.4"/><line x1="11.6" y1="11.6" x2="13" y2="13"/>
+              <line x1="13" y1="3" x2="11.6" y2="4.4"/><line x1="4.4" y1="11.6" x2="3" y2="13"/>
+            </svg>
+          ) : (
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <path d="M13 9.5A6 6 0 117 3a4.5 4.5 0 006 6.5z"/>
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Sources popover at bottom */}

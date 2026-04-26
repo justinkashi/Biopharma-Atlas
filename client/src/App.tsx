@@ -4,10 +4,12 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { useState, createContext, useContext, lazy, Suspense } from "react";
+import { useState, createContext, useContext, useEffect, lazy, Suspense } from "react";
 import { Sidebar } from "@/components/Sidebar";
 import { InfoPanel } from "@/components/InfoPanel";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { CommandPalette } from "@/components/CommandPalette";
+import { ChartPageSkeleton, CardGridSkeleton, TablePageSkeleton } from "@/components/PageSkeleton";
 import NotFound from "@/pages/not-found";
 
 // Eagerly loaded pages (core dashboard)
@@ -39,20 +41,46 @@ export function useInfoPanel() {
   return useContext(InfoPanelContext);
 }
 
-function LazyFallback() {
+// Theme context
+type Theme = "dark" | "light";
+interface ThemeContextType { theme: Theme; toggleTheme: () => void; }
+export const ThemeContext = createContext<ThemeContextType>({ theme: "dark", toggleTheme: () => {} });
+export function useTheme() { return useContext(ThemeContext); }
+
+function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(() =>
+    (localStorage.getItem("atlas-theme") as Theme) ?? "dark"
+  );
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("atlas-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme(t => t === "dark" ? "light" : "dark");
+
   return (
-    <div className="flex items-center justify-center h-[60vh]">
-      <div className="text-center space-y-3">
-        <div className="w-8 h-8 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto" />
-        <p className="text-sm text-muted-foreground font-mono">Loading...</p>
-      </div>
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 
-function LazyRoute({ component: Component }: { component: React.LazyExoticComponent<() => JSX.Element> }) {
+type SkeletonType = "chart" | "cards" | "table";
+
+function LazyRoute({
+  component: Component,
+  skeleton = "chart",
+}: {
+  component: React.LazyExoticComponent<() => JSX.Element>;
+  skeleton?: SkeletonType;
+}) {
+  const fallback =
+    skeleton === "cards" ? <CardGridSkeleton /> :
+    skeleton === "table" ? <TablePageSkeleton /> :
+    <ChartPageSkeleton />;
   return (
-    <Suspense fallback={<LazyFallback />}>
+    <Suspense fallback={fallback}>
       <Component />
     </Suspense>
   );
@@ -70,14 +98,14 @@ function AppRouter() {
       <Route path="/sponsors" component={Sponsors} />
       {/* Investment */}
       <Route path="/signals" component={InvestmentSignals} />
-      <Route path="/pitch">{() => <LazyRoute component={StockPitch} />}</Route>
-      <Route path="/deals">{() => <LazyRoute component={DealFlow} />}</Route>
-      <Route path="/scenarios">{() => <LazyRoute component={ScenarioBuilder} />}</Route>
-      <Route path="/regulatory">{() => <LazyRoute component={RegulatoryTracker} />}</Route>
-      <Route path="/patents">{() => <LazyRoute component={PatentCliff} />}</Route>
+      <Route path="/pitch">{() => <LazyRoute component={StockPitch} skeleton="chart" />}</Route>
+      <Route path="/deals">{() => <LazyRoute component={DealFlow} skeleton="chart" />}</Route>
+      <Route path="/scenarios">{() => <LazyRoute component={ScenarioBuilder} skeleton="chart" />}</Route>
+      <Route path="/regulatory">{() => <LazyRoute component={RegulatoryTracker} skeleton="table" />}</Route>
+      <Route path="/patents">{() => <LazyRoute component={PatentCliff} skeleton="chart" />}</Route>
       {/* Learning */}
-      <Route path="/encyclopedia">{() => <LazyRoute component={Encyclopedia} />}</Route>
-      <Route path="/news">{() => <LazyRoute component={NewsFeed} />}</Route>
+      <Route path="/encyclopedia">{() => <LazyRoute component={Encyclopedia} skeleton="table" />}</Route>
+      <Route path="/news">{() => <LazyRoute component={NewsFeed} skeleton="cards" />}</Route>
       {/* Fallback */}
       <Route component={NotFound} />
     </Switch>
@@ -114,6 +142,7 @@ function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
+    <ThemeProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <InfoPanelContext.Provider value={{ openPanel: setActivePanelKey }}>
@@ -147,11 +176,13 @@ function App() {
               modalityKey={activePanelKey}
               onClose={() => setActivePanelKey(null)}
             />
+            <CommandPalette />
           </Router>
         </InfoPanelContext.Provider>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
+    </ThemeProvider>
   );
 }
 

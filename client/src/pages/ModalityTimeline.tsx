@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer,
   CartesianGrid, ReferenceLine, Legend
 } from "recharts";
 import { modalityTimelineData, modalityKeys, milestoneEvents } from "@/data/pipelineData";
 import { useInfoPanel } from "@/App";
+import { exportCsv } from "@/lib/exportCsv";
+import { DrugDetailModal } from "@/components/DrugDetailModal";
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
@@ -36,7 +38,35 @@ export default function ModalityTimeline() {
   const [hiddenModalities, setHiddenModalities] = useState<Set<string>>(new Set());
   const [hoveredModality, setHoveredModality] = useState<string | null>(null);
   const [focusedYear, setFocusedYear] = useState<number | null>(null);
+  const [playYear, setPlayYear] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [selectedMilestone, setSelectedMilestone] = useState<typeof milestoneEvents[number] | null>(null);
   const milestoneScrollRef = useRef<HTMLDivElement>(null);
+  const playIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const allYears = modalityTimelineData.map(d => d.year);
+  const minYear = Math.min(...allYears);
+  const maxYear = Math.max(...allYears);
+
+  const stopPlay = useCallback(() => {
+    setIsPlaying(false);
+    setPlayYear(null);
+    if (playIntervalRef.current) clearInterval(playIntervalRef.current);
+  }, []);
+
+  const startPlay = useCallback(() => {
+    setFocusedYear(null);
+    setIsPlaying(true);
+    let year = minYear;
+    setPlayYear(year);
+    playIntervalRef.current = setInterval(() => {
+      year += 1;
+      if (year > maxYear) { stopPlay(); return; }
+      setPlayYear(year);
+    }, 400);
+  }, [minYear, maxYear, stopPlay]);
+
+  useEffect(() => () => { if (playIntervalRef.current) clearInterval(playIntervalRef.current); }, []);
 
   const toggleModality = (key: string) => {
     setHiddenModalities(prev => {
@@ -48,32 +78,40 @@ export default function ModalityTimeline() {
   };
 
   const handleMilestoneClick = (year: number) => {
-    if (focusedYear === year) {
-      // Unfocus on second click
-      setFocusedYear(null);
-    } else {
-      setFocusedYear(year);
-    }
+    if (isPlaying) return;
+    setFocusedYear(prev => prev === year ? null : year);
   };
 
-  // Compute chart domain based on focused year — center view around it
-  const allYears = modalityTimelineData.map(d => d.year);
-  const minYear = Math.min(...allYears);
-  const maxYear = Math.max(...allYears);
-  const chartDomain: [number | string, number | string] = focusedYear
-    ? [
-        Math.max(minYear, focusedYear - 6),
-        Math.min(maxYear, focusedYear + 6),
-      ]
+  // Active display year — play animation takes priority over focused year
+  const activeYear = playYear ?? focusedYear;
+
+  // Compute chart domain
+  const chartDomain: [number | string, number | string] = playYear
+    ? [minYear, playYear]
+    : focusedYear
+    ? [Math.max(minYear, focusedYear - 6), Math.min(maxYear, focusedYear + 6)]
     : [minYear, maxYear];
+
+  // Slice data for animation
+  const chartData = playYear
+    ? modalityTimelineData.filter(d => d.year <= playYear)
+    : modalityTimelineData;
 
   return (
     <div className="p-6 min-h-full">
-      <div className="mb-4">
-        <h1 className="text-lg font-semibold text-foreground tracking-tight">Modality Evolution Timeline</h1>
-        <p className="text-xs text-muted-foreground mt-0.5">
-          FDA approvals by drug class (2000–2025). Click legend to toggle. Click modality name to learn more.
-        </p>
+      <div className="mb-4 flex items-start justify-between">
+        <div>
+          <h1 className="text-lg font-semibold text-foreground tracking-tight">Modality Evolution Timeline</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            FDA approvals by drug class (2000–2025). Click legend to toggle. Click modality name to learn more.
+          </p>
+        </div>
+        <button
+          onClick={() => exportCsv("modality-timeline", modalityTimelineData as Record<string, unknown>[])}
+          className="text-[9px] px-2 py-1 rounded border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors font-mono flex-shrink-0"
+        >
+          ↓ CSV
+        </button>
       </div>
 
       {/* Legend */}
@@ -123,21 +161,38 @@ export default function ModalityTimeline() {
 
       {/* Main chart */}
       <div className="bg-card border border-card-border rounded-xl p-4 mb-4">
-        {focusedYear && (
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-[10px] font-mono text-primary">
-              Focused: {focusedYear} — showing ±6 years
-            </span>
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            {/* Play / Pause button */}
             <button
-              onClick={() => setFocusedYear(null)}
-              className="text-[10px] px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+              onClick={isPlaying ? stopPlay : startPlay}
+              className="flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full border transition-all font-mono"
+              style={{
+                color: isPlaying ? "#f43f5e" : "#06b6d4",
+                borderColor: isPlaying ? "#f43f5e40" : "#06b6d440",
+                background: isPlaying ? "#f43f5e10" : "#06b6d410",
+              }}
             >
-              Reset view
+              {isPlaying ? (
+                <><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><rect x="1" y="1" width="3" height="8"/><rect x="6" y="1" width="3" height="8"/></svg> Stop</>
+              ) : (
+                <><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><polygon points="1,1 9,5 1,9"/></svg> Play 2000→2025</>
+              )}
             </button>
+            {playYear && <span className="font-mono text-xs text-primary font-bold">{playYear}</span>}
           </div>
-        )}
+          {focusedYear && !isPlaying && (
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono text-primary">Focused: {focusedYear} ±6 yrs</span>
+              <button
+                onClick={() => setFocusedYear(null)}
+                className="text-[10px] px-2 py-0.5 rounded border border-border text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+              >Reset</button>
+            </div>
+          )}
+        </div>
         <ResponsiveContainer width="100%" height={380}>
-          <AreaChart data={modalityTimelineData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+          <AreaChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
             <defs>
               {modalityKeys.map(mk => (
                 <linearGradient key={mk.key} id={`grad-${mk.key}`} x1="0" y1="0" x2="0" y2="1">
@@ -231,7 +286,7 @@ export default function ModalityTimeline() {
                 <div
                   key={i}
                   data-testid={`milestone-${m.year}`}
-                  onClick={() => handleMilestoneClick(m.year)}
+                  onClick={() => { handleMilestoneClick(m.year); setSelectedMilestone(m); }}
                   className="bg-background border rounded-lg p-3 w-52 flex-shrink-0 transition-all duration-200 select-none"
                   style={{
                     cursor: "pointer",
@@ -264,6 +319,8 @@ export default function ModalityTimeline() {
           </div>
         </div>
       </div>
+
+      <DrugDetailModal milestone={selectedMilestone} onClose={() => setSelectedMilestone(null)} />
     </div>
   );
 }
