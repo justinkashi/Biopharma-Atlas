@@ -10,41 +10,25 @@
 An interactive data visualization dashboard mapping 25 years of global drug development — from the first targeted kinase inhibitor in 2001 to CRISPR therapies in 2023. Built for bioengineers, scientists, and analysts who want real data and biological context, not marketing slides.
 
 ---
-WEBSITE: LIVE AT 
-## Screenshots
-
-### Overview — KPIs, Modality Evolution, Milestone Timeline
-The landing view shows 5 high-level KPIs (897 novel drugs, 12k+ pipeline trials, 14 ADCs), a stacked area chart of FDA approvals by modality class from 2000–2025, a condition-area bar chart from ClinicalTrials.gov, and an annotated milestone timeline of paradigm-shifting approvals.
-
-### Modality Timeline — 25-Year FDA Approval Evolution
-Interactive stacked area chart + bar chart decomposing every FDA approval by drug class. Click legend items to open the InfoPanel with deep mechanistic descriptions, advantages/limitations, and landmark drug cards for each modality.
-
-### Pipeline Funnel — Phase Attrition by Modality
-Side-by-side funnel visualization showing estimated Phase I → II → III → Approved progression for 8 modalities, alongside a real-data bar chart of active ClinicalTrials.gov pipeline by modality category (27k+ cell therapy trials, 15k+ mAb trials, etc.).
-
-### Body Map — Anatomical Organ View
-Detailed anatomical SVG of the human body with proper organ shapes (brain hemispheres, lung lobes, heart chambers, bean-shaped kidneys, GI tract). Click any organ region to see real trial counts, top modalities, delivery routes, key drug targets, approved drugs, and an expandable Learn More tooltip with drug delivery biology.
-
-### Target Class Heatmap — 2005 → 2015 → 2025
-Color-coded heatmap showing pipeline activity for 10 drug target classes at 3 time points. Immediately visualizes the immune checkpoint explosion (2 programs in 2005 → 650 in 2025) and PROTAC emergence (0 → 45). Each row expands to show mechanism detail and landmark drugs.
-
-### Sponsors — Big Pharma vs Biotech Breakdown
-Treemap and table comparing pipeline sizes and modality focus of 17 major sponsors from Roche/AstraZeneca (~180 programs each) to focused biotechs like Alnylam (siRNA) and CRISPR Therapeutics.
+WEBSITE: LIVE AT https://justinkashi.github.io/Biopharma-Atlas/ 
 
 ---
 
 ## What Is This?
 
-BioPharma Atlas is a static frontend dashboard that makes the global drug development landscape explorable for scientists and analysts. It answers questions like:
+BioPharma Atlas is a competitive intelligence and landscape analysis tool built by a scientist, for people who need to understand where drug development is heading — and why.
 
-- What modalities are FDA approving more of, and which are declining?
-- Which organ systems have the most clinical trial activity — and why?
-- How has kinase inhibitor activity grown compared to immune checkpoints?
-- What's the actual phase attrition rate for CAR-T vs small molecules?
-- Which companies are focused on which modalities?
+The motivation was direct: business development, licensing, and fundraising decisions in biotech are heavily context-dependent. A BD team evaluating a partnership around a bispecific antibody platform needs to quickly answer questions like: How crowded is the bispecific space right now? Which companies are already in this mechanism? What's the historical FDA approval rate for this modality class? Which organ systems are underserved? Today, answering those questions means stitching together FDA databases, ClinicalTrials.gov exports, company IR pages, and industry reports — a process that takes days and still produces a fragmented picture.
 
-The app bundles all data as TypeScript imports — no backend, no API calls, instant load. Data provenance is tracked per-dataset with verified/composite/estimated confidence ratings displayed inline.
+BioPharma Atlas consolidates 25 years of FDA approvals, 27,000+ active clinical trials, phase attrition rates, target class trends, and major sponsor pipeline breakdowns into a single interactive dashboard — with data confidence ratings shown inline so you always know what's verified vs. estimated.
 
+Relevant for BD, strategy, and scientific teams at clinical-stage biotechs:
+
+Partnership and licensing diligence — before approaching or evaluating a partner, map the competitive landscape by modality, target class, and indication. See which sponsors already own the space and which mechanisms are underrepresented.
+Platform positioning — understand where antibody-based modalities (mAbs, bispecifics, ADCs) sit in the current approval trajectory versus emerging platforms. The modality timeline makes 25 years of FDA approval trends explorable in minutes.
+Deal landscape context — the Sponsors view benchmarks pipeline depth and modality focus across 17 major companies, giving BD teams a fast read on who is building vs. buying in a given therapeutic area.
+Attrition-aware forecasting — phase transition success rates by modality class are surfaced directly, grounding probability-of-success assumptions in real historical data rather than optimistic projections.
+The tool is built to serve the kind of rapid, defensible landscape analysis that BD and strategy teams need to produce presentations, executive briefings, and opportunity assessments — without requiring a Bloomberg Terminal or a data vendor subscription.
 ---
 
 ## Features
