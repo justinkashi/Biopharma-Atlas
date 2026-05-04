@@ -16,11 +16,11 @@ WEBSITE: LIVE AT https://justinkashi.github.io/Biopharma-Atlas/
 
 ## What Is This?
 
-BioPharma Atlas is a competitive intelligence and landscape analysis tool built by a scientist, for people who need to understand where drug development is heading — and why.
+BioPharma Atlas is a competitive intelligence dashboard built by a scientist, for investors and BD strategy teams who need to understand the drug development landscape quickly and confidently.
 
-The motivation was direct: business development, licensing, and fundraising decisions in biotech are heavily context-dependent. A BD team evaluating a partnership around a bispecific antibody platform needs to quickly answer questions like: *How crowded is the bispecific space right now? Which companies are already in this mechanism? What's the historical FDA approval rate for this modality class? Which organ systems are underserved?* Today, answering those questions means stitching together FDA databases, ClinicalTrials.gov exports, company IR pages, and industry reports — a process that takes days and still produces a fragmented picture.
+Answering basic questions before a partner call — *How crowded is the bispecific space? Who's already in this mechanism? What's the historical attrition rate for ADCs?* — currently means stitching together FDA databases, ClinicalTrials.gov, company IR pages, and industry reports. BioPharma Atlas puts 25 years of FDA approvals, 27,000+ active trials, phase attrition rates, target class trends, and major sponsor pipelines in one place, with data confidence ratings shown inline.
 
-BioPharma Atlas consolidates 25 years of FDA approvals, 27,000+ active clinical trials, phase attrition rates, target class trends, and major sponsor pipeline breakdowns into a single interactive dashboard — with data confidence ratings shown inline so you always know what's verified vs. estimated.
+Built for the kind of rapid landscape analysis that goes into partnership decks, licensing evaluations, and opportunity assessments — without a Bloomberg Terminal.
 
 **Relevant for BD, strategy, and scientific teams at clinical-stage biotechs:**
 
@@ -29,7 +29,7 @@ BioPharma Atlas consolidates 25 years of FDA approvals, 27,000+ active clinical 
 - **Deal landscape context** — the Sponsors view benchmarks pipeline depth and modality focus across 17 major companies, giving BD teams a fast read on who is building vs. buying in a given therapeutic area.
 - **Attrition-aware forecasting** — phase transition success rates by modality class are surfaced directly, grounding probability-of-success assumptions in real historical data rather than optimistic projections.
 
-The tool is built to serve the kind of rapid, defensible landscape analysis that BD and strategy teams need to produce presentations, executive briefings, and opportunity assessments — without requiring a Bloomberg Terminal or a data vendor subscription.
+**This is the current version — a fully static dashboard.** The roadmap takes it significantly further. The architecture specification in this repo (`DATABASE_ARCHITECTURE.md`) outlines the transition to a live data platform: automated ingestion pipelines pulling daily from ClinicalTrials.gov, FDA, SEC EDGAR, and stock feeds; a structured PostgreSQL backend with full data provenance tracking; and an AI layer for natural language querying, catalyst event detection, and Phase 3 success prediction. The goal is a tool where a BD team can ask *"show me all bispecific programs in solid tumors that entered Phase 2 in the last 18 months and flag any that had a >10% stock move on data readout"* — and get an answer in seconds, not days.
 
 ---
 
