@@ -35,20 +35,15 @@ Treemap and table comparing pipeline sizes and modality focus of 17 major sponso
 
 ## What Is This?
 
-BioPharma Atlas is a competitive intelligence and landscape analysis tool built by a scientist, for people who need to understand where drug development is heading — and why.
+BioPharma Atlas is a static frontend dashboard that makes the global drug development landscape explorable for scientists and analysts. It answers questions like:
 
-The motivation was direct: business development, licensing, and fundraising decisions in biotech are heavily context-dependent. A BD team evaluating a partnership around a bispecific antibody platform needs to quickly answer questions like: *How crowded is the bispecific space right now? Which companies are already in this mechanism? What's the historical FDA approval rate for this modality class? Which organ systems are underserved?* Today, answering those questions means stitching together FDA databases, ClinicalTrials.gov exports, company IR pages, and industry reports — a process that takes days and still produces a fragmented picture.
+- What modalities are FDA approving more of, and which are declining?
+- Which organ systems have the most clinical trial activity — and why?
+- How has kinase inhibitor activity grown compared to immune checkpoints?
+- What's the actual phase attrition rate for CAR-T vs small molecules?
+- Which companies are focused on which modalities?
 
-BioPharma Atlas consolidates 25 years of FDA approvals, 27,000+ active clinical trials, phase attrition rates, target class trends, and major sponsor pipeline breakdowns into a single interactive dashboard — with data confidence ratings shown inline so you always know what's verified vs. estimated.
-
-**Relevant for companies like Ability Biotherapeutics and other clinical-stage biotechs:**
-
-- **Partnership and licensing diligence** — before approaching or evaluating a partner, map the competitive landscape by modality, target class, and indication. See which sponsors already own the space and which mechanisms are underrepresented.
-- **Platform positioning** — understand where antibody-based modalities (mAbs, bispecifics, ADCs) sit in the current approval trajectory versus emerging platforms. The modality timeline makes 25 years of FDA approval trends explorable in minutes.
-- **Deal landscape context** — the Sponsors view benchmarks pipeline depth and modality focus across 17 major companies, giving BD teams a fast read on who is building vs. buying in a given therapeutic area.
-- **Attrition-aware forecasting** — phase transition success rates by modality class are surfaced directly, grounding probability-of-success assumptions in real historical data rather than optimistic projections.
-
-The tool is built to serve the kind of rapid, defensible landscape analysis that BD and strategy teams need to produce presentations, executive briefings, and opportunity assessments — without requiring a Bloomberg Terminal or a data vendor subscription.
+The app bundles all data as TypeScript imports — no backend, no API calls, instant load. Data provenance is tracked per-dataset with verified/composite/estimated confidence ratings displayed inline.
 
 ---
 
