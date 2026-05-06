@@ -24,10 +24,11 @@ Built for the kind of rapid landscape analysis that goes into partnership decks,
 
 **Relevant for BD, strategy, and scientific teams at clinical-stage biotechs:**
 
-- **Partnership and licensing diligence** — before approaching or evaluating a partner, map the competitive landscape by modality, target class, and indication. See which sponsors already own the space and which mechanisms are underrepresented.
-- **Platform positioning** — understand where antibody-based modalities (mAbs, bispecifics, ADCs) sit in the current approval trajectory versus emerging platforms. The modality timeline makes 25 years of FDA approval trends explorable in minutes.
-- **Deal landscape context** — the Sponsors view benchmarks pipeline depth and modality focus across 17 major companies, giving BD teams a fast read on who is building vs. buying in a given therapeutic area.
-- **Attrition-aware forecasting** — phase transition success rates by modality class are surfaced directly, grounding probability-of-success assumptions in real historical data rather than optimistic projections.
+- **"Who else is competing in our modality and indication?"** — Sponsors view shows pipeline size and modality focus across 17 major players, from Roche/AstraZeneca down to focused biotechs like Alnylam (siRNA) and CRISPR Therapeutics. Useful for licensing scans, competitor monitoring, and partnership target lists.
+- **"Where is the field actually going?"** — Modality Timeline decomposes every FDA approval from 2000–2025 by drug class, making it obvious where the field has invested vs. retreated (e.g., the immune checkpoint explosion: 2 active programs in 2005 → 650 in 2025).
+- **"What's the realistic clinical risk for our modality?"** — Pipeline Funnel shows Phase I → II → III → Approved attrition by modality, alongside live ClinicalTrials.gov pipeline counts (27k+ cell therapy trials, 15k+ mAb trials).
+- **"What's the activity in our target organ system?"** — Body Map shows real trial counts, top modalities, delivery routes, and approved drugs by organ region — useful for orienting around indication selection and tissue-specific delivery considerations.
+- **"Which targets are heating up?"** — Target Class Heatmap shows 10 drug-target classes across 2005 / 2015 / 2025, surfacing emerging spaces (PROTACs: 0 → 45) alongside saturated ones.
 
 **This is the current version — a fully static dashboard.** The roadmap takes it significantly further. The architecture specification in this repo (`DATABASE_ARCHITECTURE.md`) outlines the transition to a live data platform: automated ingestion pipelines pulling daily from ClinicalTrials.gov, FDA, SEC EDGAR, and stock feeds; a structured PostgreSQL backend with full data provenance tracking; and an AI layer for natural language querying, catalyst event detection, and Phase 3 success prediction. The goal is a tool where a BD team can ask *"show me all bispecific programs in solid tumors that entered Phase 2 in the last 18 months and flag any that had a >10% stock move on data readout"* — and get an answer in seconds, not days.
 
